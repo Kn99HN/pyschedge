@@ -1,7 +1,7 @@
 import json
 import logging
 import requests as re
-from src.SchedgeException import SchedgeException
+from pyschedge.SchedgeException import SchedgeException
 
 logger = logging.getLogger(__name__)
 
@@ -130,7 +130,3 @@ class Schedge(object):
         if subject != "":
             subject = f"{url}&subject={subject}"
         return self._internal_call("GET", url)
-
-
-if __name__ == "__main__":
-    logger.info(msg="Starting!")
