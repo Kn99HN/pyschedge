@@ -15,6 +15,19 @@ headers = {
 
 class Schedge(object):
     def __init__(self, sem, year):
+        """
+        Create a Schedge API client
+
+        Args:
+            sem (str):
+            semester code, can only be 'fa','sp','ja','su'
+            year (int): the year requested for data
+
+        Raises:
+            SchedgeException:
+            an exception indicating
+            error with message
+        """
         if sem not in sem:
             raise SchedgeException(-1, -1, "", reason="Invalid Semester Code")
         self._prefix = "https://schedge.a1liu.com"
@@ -23,6 +36,22 @@ class Schedge(object):
         self._session = re.Session()
 
     def _internal_call(self, method, url):
+        """
+        Creating a session.
+        https://requests.readthedocs.io/en/master/user/advanced/
+
+        Args:
+            method (str): type of request
+            url (str): URL for making the request
+
+        Raises:
+            SchedgeException:
+            an exception indicating
+            error with message
+
+        Returns:
+            list[str]: Arrays of JSON from the request
+        """
         logger.debug("Sending %s to %s with Headers: %s", method, url, headers)
         try:
             resp = self._session.request(method, url, headers=headers)
