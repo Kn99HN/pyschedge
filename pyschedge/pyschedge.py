@@ -79,7 +79,7 @@ class Schedge(object):
     def get_school(self):
         url = f"{self._prefix}/schools"
         return self._internal_call("GET", url)
-    
+
     def get_subject(self):
         url = f"{self._prefix}/subjects"
         return self._internal_call("GET", url)
