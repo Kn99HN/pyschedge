@@ -76,6 +76,14 @@ class Schedge(object):
             raise SchedgeException(-1, -1, e.message())
         return results
 
+    def get_school(self):
+        url = f"{self._prefix}/schools"
+        return self._internal_call("GET", url)
+    
+    def get_subject(self):
+        url = f"{self._prefix}/subjects"
+        return self._internal_call("GET", url)
+
     def get_courses(self, school, subject, full=False):
         url = f"{self._prefix}/{self.year}/{self.sem}/{school}/{subject}?full={full}"
         return self._internal_call("GET", url)
