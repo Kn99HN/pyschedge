@@ -1,2 +1,2 @@
-from .client import *
+from .pyschedge import *
 from .SchedgeException import *
