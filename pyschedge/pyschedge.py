@@ -5,7 +5,7 @@ from pyschedge.SchedgeException import SchedgeException
 
 logger = logging.getLogger(__name__)
 
-valid_sem = ["fa", "sp", "su", "ja"]
+valid_sem = {"fa", "sp", "su", "ja"}
 headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Encoding": "gzip, deflate, br",
@@ -28,7 +28,7 @@ class Schedge(object):
             an exception indicating
             error with message
         """
-        if sem not in sem:
+        if sem not in valid_sem:
             raise SchedgeException(-1, -1, "", reason="Invalid Semester Code")
         self._prefix = "https://schedge.a1liu.com"
         self.sem = sem
